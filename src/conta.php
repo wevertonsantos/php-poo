@@ -4,7 +4,7 @@ class Conta
 {
     public $cpfTitular;
     public $nomeTitular;
-    public $saldo;
+    public $saldo = 0;
 
     public function sacarSaldo(float $valorASacar)
     {
@@ -12,6 +12,15 @@ class Conta
             echo 'Você não pode sacar esse valor' . PHP_EOL;
         }else{
             $this->saldo -= $valorASacar;
+        }
+    }
+
+    public function depositar(float $valorADepositar)
+    {
+        if($valorADepositar < 0){
+            'Valor precisa ser positivo' . PHP_EOL;
+        }else{
+            $this->saldo += $valorADepositar;
         }
     }
 }
