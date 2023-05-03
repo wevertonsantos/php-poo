@@ -10,27 +10,30 @@ class Conta
     {
         if($valorASacar > $this->saldo){
             echo 'Você não pode sacar esse valor' . PHP_EOL;
-        }else{
-            $this->saldo -= $valorASacar;
+            return;
         }
+
+        $this->saldo -= $valorASacar;
     }
 
     public function depositar(float $valorADepositar) : void
     {
         if($valorADepositar < 0){
             'Valor precisa ser positivo' . PHP_EOL;
-        }else{
-            $this->saldo += $valorADepositar;
+            return;
         }
+        
+        $this->saldo += $valorADepositar;
     }
 
-    public function transferir(float $valorATransferir, Conta $contaDestino){
+    public function transferir(float $valorATransferir, Conta $contaDestino) : void{
         if($valorATransferir > $this->saldo){
             echo 'Saldo insuficiente' . PHP_EOL;
-        }else{
-            $this->sacarSaldo($valorATransferir);
-            $contaDestino->depositar($valorATransferir);
+            return;
         }
+        
+        $this->sacarSaldo($valorATransferir);
+        $contaDestino->depositar($valorATransferir);
     }
 
 }
