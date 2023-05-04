@@ -2,8 +2,9 @@
 
 require_once 'src/Conta.php';
 
-$primeiraConta = new Conta();
+$primeiraConta = new Conta('123.456.789-10', 'Weverton');
 $primeiraConta->depositar(1000);
-$primeiraConta->definirCpfTitular('123.456.789-10');
 
 echo $primeiraConta->recuperarCpfTitular() . PHP_EOL;
+echo $primeiraConta->recuperarNomeTitular() . PHP_EOL;
+echo $primeiraConta->recupararSaldo() . PHP_EOL;
