@@ -9,6 +9,7 @@ class Conta
     public function __construct(string $cpfTitular, string $nomeTitular)
     {
         $this->cpfTitular = $cpfTitular;
+        $this->validaNome($nomeTitular);
         $this->nomeTitular = $nomeTitular;
         $this->saldo = 0;
     }
@@ -57,6 +58,15 @@ class Conta
     public function recuperarNomeTitular() : string
     {
         return $this->nomeTitular;
+    }
+
+    private function validaNome(string $nomeTitular)
+    {
+        if(strlen($nomeTitular) < 5){
+            echo 'Numero insuficiente de caracteres' . PHP_EOL;
+            exit;
+        }
+        
     }
 
 }
