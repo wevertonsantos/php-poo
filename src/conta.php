@@ -2,9 +2,9 @@
 
 class Conta
 {
-    public $cpfTitular;
-    public $nomeTitular;
-    public $saldo = 0;
+    private string $cpfTitular;
+    private string $nomeTitular;
+    private float $saldo = 0;
 
     public function sacarSaldo(float $valorASacar) : void
     {
@@ -31,17 +31,9 @@ class Conta
             echo 'Saldo insuficiente' . PHP_EOL;
             return;
         }
-        
+
         $this->sacarSaldo($valorATransferir);
         $contaDestino->depositar($valorATransferir);
     }
 
 }
-
-$primeiraConta = new Conta();
-
-$primeiraConta->cpfTitular = '123.456.789-10';
-$primeiraConta->nomeTitular = 'Weverton';
-$primeiraConta->saldo = 500;
-
-var_dump($primeiraConta);
