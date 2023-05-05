@@ -1,13 +1,10 @@
 <?php
 
-require_once 'src/Cpf.php';
-require_once 'src/Nome.php';
-
 class Titular
 {
 
-    private $nome;
-    private $cpf;
+    private Nome $nome;
+    private Cpf $cpf;
 
     public function __construct(Cpf $cpf, Nome $nome){
 
