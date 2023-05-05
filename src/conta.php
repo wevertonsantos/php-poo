@@ -1,17 +1,16 @@
 <?php
 
+require_once 'src/Titular.php';
+
 class Conta
 {
-    private string $cpfTitular;
-    private string $nomeTitular;
     private float $saldo = 0;
     private static $numeroDeContas = 0;
+    private $titular;
 
-    public function __construct(string $cpfTitular, string $nomeTitular)
+    public function __construct(Titular $titular)
     {
-        $this->cpfTitular = $cpfTitular;
-        $this->validaNome($nomeTitular);
-        $this->nomeTitular = $nomeTitular;
+        $this->titular = $titular;
         $this->saldo = 0;
 
         self::$numeroDeContas++;
@@ -53,24 +52,16 @@ class Conta
         return $this->saldo;
     }
 
-    public function recuperarCpfTitular() : string
+    public function recupararCpfTitular() : string
     {
-        return $this->cpfTitular;
+        return $this->titular->recuperarCpf();
     }
 
-    public function recuperarNomeTitular() : string
+    public function recupararNomeTitular() : string
     {
-        return $this->nomeTitular;
+        return $this->titular->recuperarNome();
     }
 
-    private function validaNome(string $nomeTitular)
-    {
-        if(strlen($nomeTitular) < 5){
-            echo 'Numero insuficiente de caracteres' . PHP_EOL;
-            exit;
-        }
-        
-    }
 
     public static function numeroDeContas() : int
     {
