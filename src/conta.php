@@ -52,7 +52,7 @@ class Conta
         return $this->saldo;
     }
 
-    public function recupararCpfTitular() : string
+    public function recupararCpfTitular()
     {
         return $this->titular->recuperarCpf();
     }

@@ -1,12 +1,15 @@
 <?php
 
+require_once 'src/Cpf.php';
+require_once 'src/Nome.php';
+
 class Titular
 {
 
-    private string $cpf;
-    private string $nome;
+    private $nome;
+    private $cpf;
 
-    public function __construct(string $cpf, string $nome){
+    public function __construct(Cpf $cpf, Nome $nome){
 
         $this->cpf = $cpf;
         $this->nome = $nome;
@@ -16,18 +19,18 @@ class Titular
 
     public function recuperarCpf() : string
     {
-        return $this->cpf;
+        return $this->cpf->recuperarCpf();
     }
 
     public function recuperarNome() : string
     {
-        return $this->nome;
+        return $this->nome->recuperarNome();
     }
 
 
-    private function validaNome(string $nome)
+    private function validaNome($nome)
     {
-        if(strlen($nome) < 5){
+        if(strlen($this->nome->recuperarNome()) < 5){
             echo 'Numero insuficiente de caracteres' . PHP_EOL;
             exit;
         }
