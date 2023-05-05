@@ -5,6 +5,7 @@ class Conta
     private string $cpfTitular;
     private string $nomeTitular;
     private float $saldo = 0;
+    private static $numeroDeContas = 0;
 
     public function __construct(string $cpfTitular, string $nomeTitular)
     {
@@ -12,6 +13,8 @@ class Conta
         $this->validaNome($nomeTitular);
         $this->nomeTitular = $nomeTitular;
         $this->saldo = 0;
+
+        self::$numeroDeContas++;
     }
 
     public function sacarSaldo(float $valorASacar) : void
@@ -67,6 +70,11 @@ class Conta
             exit;
         }
         
+    }
+
+    public static function numeroDeContas() : int
+    {
+        return self::$numeroDeContas;
     }
 
 }
